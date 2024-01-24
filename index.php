@@ -27,8 +27,6 @@ if (isset($_GET["phonenum"])) {
         ->validateResult(false)
         ->build();
 
-
-// Directly output the QR code
     header('Content-Type: '.$result->getMimeType());
     echo $result->getString();
 } else {
@@ -39,12 +37,12 @@ if (isset($_GET["phonenum"])) {
     <title>QRCode</title>
 </head>
     <body>
-    <form>
-               <label>Phonenumber:</label>
-               <input name="phonenum" type="text" required>
-                    <button type="submit">Code generieren</button>
-            </form>
-</body>
+        <form>
+            <label>Phonenumber:</label>
+            <input name="phonenum" type="number" required>
+            <button type="submit">Code generieren</button>
+        </form>
+    </body>
 </html>
 FORMULAR;
 
