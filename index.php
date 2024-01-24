@@ -1,12 +1,10 @@
 <?php
 use Endroid\QrCode\Builder\Builder;
 use Endroid\QrCode\Encoding\Encoding;
-use Endroid\QrCode\ErrorCorrectionLevel;
-use Endroid\QrCode\Label\LabelAlignment;
 use Endroid\QrCode\Label\Font\NotoSans;
-use Endroid\QrCode\RoundBlockSizeMode;
 use Endroid\QrCode\Writer\PngWriter;
 
+require_once "vendor/autoload.php";
 
 if (isset($_GET["phonenum"])) {
     $result = Builder::create()
@@ -14,13 +12,10 @@ if (isset($_GET["phonenum"])) {
         ->writerOptions([])
         ->data('tel:' . $_GET["phonenum"])
         ->encoding(new Encoding('UTF-8'))
-        ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
         ->size(300)
         ->margin(10)
-        ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
         ->labelText($_GET["phonenum"])
         ->labelFont(new NotoSans(20))
-        ->labelAlignment(new LabelAlignmentCenter())
         ->validateResult(false)
         ->build();
 
@@ -32,6 +27,7 @@ if (isset($_GET["phonenum"])) {
 <head>
     <meta charset="UTF-8">
     <title>QRCode</title>
+    <link rel="stylesheet" href="mystyle.css">
 </head>
     <body>
         <form>
@@ -42,5 +38,4 @@ if (isset($_GET["phonenum"])) {
     </body>
 </html>
 FORMULAR;
-
 }
