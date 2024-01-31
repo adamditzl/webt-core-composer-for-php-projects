@@ -39,3 +39,5 @@ if (isset($_GET["phonenum"])) {
 </html>
 FORMULAR;
 }
+//qr code auf der selben seite unter dem
+// mit inside an image tag  <img>  auf der seite
