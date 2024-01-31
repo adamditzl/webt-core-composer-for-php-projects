@@ -21,7 +21,7 @@ if (isset($_GET["phonenum"])) {
 
     header('Content-Type: '.$result->getMimeType());
     echo $result->getString();
-} else {
+    } else {
     echo <<<FORMULAR
 <html>
 <head>
