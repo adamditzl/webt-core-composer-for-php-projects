@@ -7,6 +7,10 @@ form {
     font-family: Arial, sans-serif;
 }
 
+#qrcodeContainer {
+    text-align: center;
+}
+
 label {
     display: block;
     margin-bottom: 10px;
