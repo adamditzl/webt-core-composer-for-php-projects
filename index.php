@@ -18,26 +18,36 @@ if (isset($_GET["phonenum"])) {
         ->labelFont(new NotoSans(20))
         ->validateResult(false)
         ->build();
+} else {
+    // Wenn keine Telefonnummer vorhanden ist, setze $result auf null
+    $result = null;
+}
 
-    header('Content-Type: '.$result->getMimeType());
-    echo $result->getString();
-    } else {
-    echo <<<FORMULAR
+echo <<<HTML
 <html>
 <head>
     <meta charset="UTF-8">
     <title>QRCode</title>
     <link rel="stylesheet" href="mystyle.css">
 </head>
-    <body>
-        <form>
-            <label>Phonenumber:</label>
-            <input name="phonenum" type="number" required>
-            <button type="submit">Code generieren</button>
-        </form>
-    </body>
-</html>
-FORMULAR;
+<body>
+    <form>
+        <label>Phonenumber:</label>
+        <input name="phonenum" type="number" required>
+        <button type="submit">Code generieren</button>
+    </form>
+
+    <div id="qrcodeContainer">
+HTML;
+
+// Wenn ein QR-Code vorhanden ist, zeige ihn an
+if ($result) {
+    echo '<img id="qrcode" alt="QR Code" src="data:' . $result->getMimeType() . ';base64,' . base64_encode($result->getString()) . '">';
 }
-//qr code auf der selben seite unter dem
-// mit inside an image tag  <img>  auf der seite
+
+echo <<<HTML
+    </div>
+</body>
+</html>
+HTML;
+?>
